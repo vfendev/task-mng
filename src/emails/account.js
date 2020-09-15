@@ -20,6 +20,7 @@ const sendCancelationEmail = (email, name) => {
     })
 }
 
+
 module.exports = {
     sendWelcomeEmail,
     sendCancelationEmail
