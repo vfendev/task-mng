@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task Manger App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body>
+
+  <div class="centered-content centered-content_lists">
+
+    <div class="lists-left">
+      <h1 class="title">Lists</h1>
+      <div class="list_of_lists"></div>
+      <button type="" name="" class="action-btn lists-btn"><a href="create-new-list.html">+ New List</a></button>
+    </div>
+
+    <div class="tasks-right">
+      <!-- kada ne postoji ni jedna lista npravljena -->
+      <!-- <p class="info-text list-info">Please select a list from the sidebar</p> -->
+      <!-- kada podtoji napravljena lista -->
+      <h1 class="title">Tasks</h1>
+      <div class="list_of_tasks">
+        <!-- ako je lista prazna -->
+        <p class="info-text tasks-info">There are no tasks here! Click the add button to create a new task.</p>
+        <!-- ako postoji neki task -->
+        <!-- <div class="task-field">
+          <div class="task-name"> Ime taska
+            <div class="edit">
+              <i class="fas fa-edit"></i>
+              <i class="fas fa-trash-alt delete-task"></i>
+            </div>
+          </div>
+        </div> -->
+        <a class="fas fa-plus-circle"></a>
+      </div>
+    </div>
+
+  </div>
+
+
+  <script src="https://kit.fontawesome.com/661dfea258.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

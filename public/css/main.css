@@ -1,0 +1,160 @@
+body {
+  background-color: #AED581;
+  font-family: 'Open Sans', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.centered-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #9E9E9E;
+}
+
+h1.title {
+  text-transform: uppercase;
+  margin: 0 0 30px;
+  color: #689F38;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  border-radius: 10px;
+  margin-bottom: 15px;
+  padding: 10px 10px 10px 30px;
+  border: 1px solid #c5c5c5;
+  background-color: #f9f9f9;
+}
+
+input:focus {
+  outline: none;
+  border-color: #AED581;
+  box-shadow: 0 0 4px #AED581;
+}
+
+input.email {
+  background: url('../img/mail.svg') #f9f9f9 left 2px no-repeat;
+  background-size: 30px;
+}
+
+input.password {
+  background: url('../img/lock.svg') #f9f9f9 left 1px no-repeat;
+  background-size: 30px;
+}
+
+.action-btn {
+  padding: 10px 8px;
+  margin: 10px 0;
+  width: 100px;
+  margin-left: auto;
+  font-weight: 700;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  background-color: #AED581;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.action-btn:hover {
+  background-color: #689F38;
+}
+
+.action-btn:focus {
+  outline: none;
+}
+
+input::placeholder {
+  font-style: italic;
+  font-size: 14px;
+  color: #c5c5c5;
+}
+
+.text-info {
+  margin: 20px 0 0;
+  font-size: 14px;
+}
+
+.text-info_link {
+  color: #689F38;
+}
+
+.text-info_link:hover {
+  text-decoration: none;
+  color: #AED581;
+}
+
+/* lists and tasks */
+.centered-content_lists {
+  display: flex;
+  width: 40%;
+  height: 50%;
+  padding: 0;
+}
+
+.lists-left {
+  flex: 0 0 25%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.lists-btn {
+  margin-top: auto;
+  /* text-align: center;
+font-size: 14px; */
+}
+
+.tasks-right {
+  flex-grow: 1;
+  padding: 20px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.info-text {
+  font-size: 14px;
+text-align: center;
+color: #9E9E9E;
+}
+
+
+
+/* add new list */
+.centered-content_new-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-list {
+  flex-grow: 1;
+  padding-left: 10px;
+}
+
+.btns {
+  text-align: right;
+}
+
+.cancel-btn {
+  background-color: #f9f9f9;
+  color: #343434;
+  font-weight: 300;
+  margin-right: 10px;
+}
+
+.cancel-btn:hover {
+  background-color: #e0e0e0;
+}
