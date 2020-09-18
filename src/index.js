@@ -13,6 +13,9 @@ app.use(userRouter);
 app.use(taskRouter);
 app.use(listRouter);
 
+// Static folder
+app.use(express.static(path.join(__dirname, 'public')))
+
 app.listen(port, () => {
     console.log('Server is up on port ' + port)
 })
