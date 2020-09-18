@@ -54,6 +54,16 @@ input.password {
   background-size: 30px;
 }
 
+input.username {
+  background: url('../img/username.png') #f9f9f9 left 1px no-repeat;
+  background-size: 30px;
+}
+
+input.number {
+  background: url('../img/age.png') #f9f9f9 left 1px no-repeat;
+  background-size: 20px;
+}
+
 .action-btn {
   padding: 10px 8px;
   margin: 10px 0;
