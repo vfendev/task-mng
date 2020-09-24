@@ -11,13 +11,13 @@
 
 <div class="centered-content">
 <h1 class="title">Sign up</h1>
-<form id="form-container"class="form" name="myForm" action="./create-new-list.html" onsubmit="return validateForm()" method="post">
+<form id="form-container" class="form" name="myForm" action="/register"  method="POST">
   <!-- <label for="mail">E-mail:</label> -->
   <input type="username" name="name" class="username" placeholder="Username" required>
-  <input type="email" name="mail" class="email" placeholder="Email" required>
+  <input type="email" name="email" class="email" placeholder="Email" required>
   <!-- <label for="phone">Password:</label> -->
   <input type="password" name="password" class="password" placeholder="Password" required>
-  <input type="number" name="number" class="number" placeholder="Age" required>
+  <input type="number" name="age" class="number" placeholder="Age" required>
   <button type="submit" name="submit" class="action-btn">Sign up</button>
 </form>
 <p class="text-info">Already got an account? <a href="lists.html" class="text-info_link">Login</a> now!</p>
@@ -27,5 +27,6 @@
 
     <!-- javascript -->
     <!-- <script src="https://kit.fontawesome.com/661dfea258.js" crossorigin="anonymous"></script> -->
+     <script src="./js/app.js"></script> 
   </body>
 </html>
