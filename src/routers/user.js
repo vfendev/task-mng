@@ -8,17 +8,17 @@ const { remove } = require('../models/user');
 const { sendWelcomeEmail, sendCancelationEmail } = require('../emails/account');
 
 // Users post 
-
 router.post('/register', async (req, res) => {
     const user = new User(req.body)
     try {
          await user.save()
          sendWelcomeEmail(user.email, user.name)
          const token = await user.generateAuthToken()
-        //  res.status(201).send({ user, token })
-         res.status(201).redirect('/create_list')
-    } catch (e) {
-         res.status(400).send(e)
+         res.status(201)
+         res.redirect('/create_list')
+         return res.send({ user, token })
+    } catch (error) {
+         res.status(400).send(error)
     }    
      
  })
@@ -27,21 +27,19 @@ router.post('/register', async (req, res) => {
      try {
          const user = await User.findByCredentials(req.body.email, req.body.password)
          const token = await user.generateAuthToken()
-        //  res.send({ user, token }).redirect('/create_list')
          res.redirect('/create_list')
+         return res.send({ user, token })
      } catch (e) {
          res.status(400).send()
      }
  })
 
 // Logout only one session
-
 router.post('/users/logout', auth, async (req, res) => {
     try {
         req.user.tokens = req.user.tokens.filter((token) => {
-            return token.token !== req.token
+        return token.token !== req.token
         })
-
         await req.user.save()
         res.send()
     } catch (e) {
@@ -50,7 +48,6 @@ router.post('/users/logout', auth, async (req, res) => {
 })
  
 // Logout all sessions
-
 router.post('/users/logoutAll', auth, async (req, res) => {
     try {
         req.user.tokens = []
@@ -61,16 +58,12 @@ router.post('/users/logoutAll', auth, async (req, res) => {
     }
 })
 
-
  // User get
- 
  router.get('/users/me', auth, async (req, res) => {
         res.send(req.user)
  })
  
- 
  // Update user
- 
  router.patch('/users/me', auth, async (req, res) => {
      const updates = Object.keys(req.body)
      const allowedUpdates = ['name', 'email', 'password', 'age']
@@ -90,7 +83,6 @@ router.post('/users/logoutAll', auth, async (req, res) => {
  })
 
  // Delete user
- 
  router.delete('/users/me', auth, async (req, res) => {
      try {
         await req.user.remove()
@@ -101,9 +93,7 @@ router.post('/users/logoutAll', auth, async (req, res) => {
      }
  })
  
-
  // Upload profile images
- 
  const upload = multer({
     limits: {
         fileSize: 1000000
@@ -126,7 +116,6 @@ router.post('/users/logoutAll', auth, async (req, res) => {
  })
 
 //  Delete profile images
-
 router.delete('/users/me/avatar', auth, async (req, res) => {  
     req.user.avatar = undefined
     await req.user.save()
@@ -136,7 +125,6 @@ router.delete('/users/me/avatar', auth, async (req, res) => {
 })
 
 // Fetching an avatar
-
 router.get('/users/:id/avatar', async (req, res) => {
     try {
         const user = await User.findById(req.params.id)

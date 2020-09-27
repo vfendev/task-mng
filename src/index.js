@@ -29,11 +29,12 @@ app.listen(port, () => {
 
 app.get('/', async (req, res) => {
     try {
-        res.render('index')
+       await res.render('index')
     } catch (error) {
         res.status(500).send()
     }
 })
+
 app.get('/register', async (req, res) => {
     try {
         await res.render('register')
@@ -65,4 +66,5 @@ app.get('/list', async (req, res) => {
         res.status(500).send()
     }
 })
+
 const User = require('./models/user')
