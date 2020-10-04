@@ -1,9 +1,10 @@
-const path = require('path')
 const express = require('express');
+const path = require('path')
 require('./db/mongoose');
 const userRouter = require('./routers/user');
 const taskRouter = require('./routers/task');
 const listRouter = require('./routers/lists');
+const getRouter = require('./routers/getRoutes');
 require('dotenv').config();
 
 const app = express();
@@ -22,49 +23,10 @@ app.use(express.json())
 app.use(userRouter);
 app.use(taskRouter);
 app.use(listRouter);
+app.use(getRouter);
 
 app.listen(port, () => {
     console.log('Server is up on port ' + port)
-})
-
-app.get('/', async (req, res) => {
-    try {
-       await res.render('index')
-    } catch (error) {
-        res.status(500).send()
-    }
-})
-
-app.get('/register', async (req, res) => {
-    try {
-        await res.render('register')
-    } catch (error) {
-        res.status(500).send()
-    }
-})
-
-app.get('/login', async (req, res) => {
-    try {
-        await res.render('login')
-    } catch (error) {
-        res.status(500).send()
-    }
-})
-
-app.get('/create_list', async (req, res) => {
-    try {
-        await res.render('create-list')
-    } catch (error) {
-        res.status(500).send()
-    }
-})
-
-app.get('/list', async (req, res) => {
-    try {
-        await res.render('list')
-    } catch (error) {
-        res.status(500).send()
-    }
 })
 
 const User = require('./models/user')
