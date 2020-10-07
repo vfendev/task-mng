@@ -15,7 +15,7 @@ router.post('/register', async (req, res) => {
          sendWelcomeEmail(user.email, user.name)
          const token = await user.generateAuthToken()
          res.status(201)
-         res.redirect('/create_list')
+        //  res.redirect('/create_list')
          return res.send({ user, token })
     } catch (error) {
          res.status(400).send(error)
@@ -27,7 +27,7 @@ router.post('/register', async (req, res) => {
      try {
          const user = await User.findByCredentials(req.body.email, req.body.password)
          const token = await user.generateAuthToken()
-         res.redirect('/create_list')
+        //  res.redirect('/create_list')
          return res.send({ user, token })
      } catch (e) {
          res.status(400).send()
