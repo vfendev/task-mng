@@ -15,10 +15,11 @@ router.post('/lists', auth, async (req, res) => {
     try {
         await list.save()
         res.status(201)
-        res.redirect('/list')
+        // res.redirect('/list')
         res.send(list)
     } catch (e) {
-        res.status(400).send(e)
+        // res.status(400).send(e)
+        res.redirect('/create_list')
     }
 })
 

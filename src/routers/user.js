@@ -15,10 +15,10 @@ router.post('/register', async (req, res) => {
          sendWelcomeEmail(user.email, user.name)
          const token = await user.generateAuthToken()
          res.status(201)
-        //  res.redirect('/create_list')
-         return res.send({ user, token })
+         return res.render('login', { user, token })
     } catch (error) {
-         res.status(400).send(error)
+        // res.status(401).send()
+         res.redirect('/register');
     }    
      
  })
@@ -27,10 +27,10 @@ router.post('/register', async (req, res) => {
      try {
          const user = await User.findByCredentials(req.body.email, req.body.password)
          const token = await user.generateAuthToken()
-        //  res.redirect('/create_list')
-         return res.send({ user, token })
+         return res.render({ user, token })
      } catch (e) {
-         res.status(400).send()
+        //  res.status(400).send()
+        res.redirect('/login')
      }
  })
 
