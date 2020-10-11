@@ -24,7 +24,7 @@ router.get('/login', async (req, res) => {
         res.status(500).send()
     }
 })
-
+ 
 router.get('/create_list', async (req, res) => {
     try {
         await res.render('create-list')

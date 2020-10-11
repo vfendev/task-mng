@@ -6,6 +6,7 @@ const router = new express.Router();
 const auth = require('../middleware/auth');
 const { remove } = require('../models/user');
 const { sendWelcomeEmail, sendCancelationEmail } = require('../emails/account');
+const { response } = require('express');
 
 // Users post 
 router.post('/register', async (req, res) => {
@@ -14,9 +15,8 @@ router.post('/register', async (req, res) => {
          await user.save()
          sendWelcomeEmail(user.email, user.name)
          const token = await user.generateAuthToken()
-         res.status(201)
-         return res.render('login', { user, token })
-    } catch (error) {
+         res.status(201).send({ user, token })
+    } catch (e) {
         // res.status(401).send()
          res.redirect('/register');
     }    
@@ -27,7 +27,7 @@ router.post('/register', async (req, res) => {
      try {
          const user = await User.findByCredentials(req.body.email, req.body.password)
          const token = await user.generateAuthToken()
-         return res.render({ user, token })
+         res.status(200).send({ user, token })
      } catch (e) {
         //  res.status(400).send()
         res.redirect('/login')
