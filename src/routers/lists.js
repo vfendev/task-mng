@@ -1,6 +1,6 @@
 const express = require('express');
 const Lists = require('../models/lists');
-const auth = require('../middleware/auth')
+const auth = require('../middleware/auth');
 const router = new express.Router();
 
 // Lists post
@@ -16,8 +16,8 @@ router.post('/lists', auth, async (req, res) => {
         await list.save()
         res.status(201).send(list)
     } catch (e) {
-        // res.status(400).send(e)
-        res.redirect('/create_list')
+        res.status(400).send(e)
+        // res.redirect('/create_list')
     }
 })
 

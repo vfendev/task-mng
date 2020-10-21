@@ -24,8 +24,8 @@ app.use(userRouter);
 app.use(taskRouter);
 app.use(listRouter);
 app.use(getRouter);
+app.set('Content-Type', 'application/json')
 
 app.listen(port, () => {
-    console.log('Server is up on port ' + port)
+    console.log(`Server is up on port ${port}`)
 })
-

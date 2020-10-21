@@ -15,22 +15,25 @@ router.post('/register', async (req, res) => {
          await user.save()
          sendWelcomeEmail(user.email, user.name)
          const token = await user.generateAuthToken()
-         res.status(201).send({ user, token })
+         res.header('x-auth-token', token).send({ user, token })
+        //  res.status(201).send({ user, token })
+        //  res.redirect('/create_list')
     } catch (e) {
-        // res.status(401).send()
-         res.redirect('/register');
-    }    
-     
+        res.status(401).send()
+        //  res.redirect('/register');
+    }       
  })
 
  router.post('/users/login', async (req, res) => {
      try {
          const user = await User.findByCredentials(req.body.email, req.body.password)
          const token = await user.generateAuthToken()
-         res.status(200).send({ user, token })
+         res.header('x-auth-token', token).send({ user, token })
+        //  res.status(200).send({ user, token })
+        //  res.redirect('/create_list')
      } catch (e) {
-        //  res.status(400).send()
-        res.redirect('/login')
+         res.status(400).send()
+        // res.redirect('/login')
      }
  })
 

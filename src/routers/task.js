@@ -1,6 +1,6 @@
 const express = require('express');
 const Tasks = require('../models/task');
-const auth = require('../middleware/auth')
+const auth = require('../middleware/auth');
 const router = new express.Router();
 
 // Tasks post
@@ -15,6 +15,7 @@ router.post('/lists/:listId/tasks', auth, async (req, res) => {
 
     try {
         await task.save()
+        // res.header('x-auth-token', token).send({ user, token })
         res.status(201).send(task)
     } catch (e) {
         res.status(400).send(e)
